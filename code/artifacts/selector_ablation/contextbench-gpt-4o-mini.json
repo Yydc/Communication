@@ -1,0 +1,68 @@
+{
+  "benchmark": "contextbench",
+  "receiver": "gpt-4o-mini",
+  "sender": "gpt-5.4",
+  "lambda_c": 0.0001,
+  "lambda_tau": 1.0,
+  "n_steps": 300,
+  "variants": [
+    {
+      "name": "full",
+      "n": 300,
+      "mean_hj": 0.7366666666666667,
+      "mean_tokens": 1734.9666666666667,
+      "action_counts": {
+        "SKIP": 175,
+        "RAW": 114,
+        "COMPRESS": 11
+      }
+    },
+    {
+      "name": "no_A",
+      "n": 300,
+      "mean_hj": 0.65,
+      "mean_tokens": 1299.7433333333333,
+      "action_counts": {
+        "SKIP": 300
+      }
+    },
+    {
+      "name": "no_tau",
+      "n": 300,
+      "mean_hj": 0.7366666666666667,
+      "mean_tokens": 1734.9666666666667,
+      "action_counts": {
+        "SKIP": 175,
+        "RAW": 114,
+        "COMPRESS": 11
+      }
+    },
+    {
+      "name": "always_skip",
+      "n": 300,
+      "mean_hj": 0.65,
+      "mean_tokens": 1299.7433333333333,
+      "action_counts": {
+        "SKIP": 300
+      }
+    },
+    {
+      "name": "always_send",
+      "n": 300,
+      "mean_hj": 0.7866666666666666,
+      "mean_tokens": 3235.3766666666666,
+      "action_counts": {
+        "COMPRESS": 300
+      }
+    },
+    {
+      "name": "always_raw",
+      "n": 300,
+      "mean_hj": 0.7433333333333333,
+      "mean_tokens": 2166.0266666666666,
+      "action_counts": {
+        "RAW": 300
+      }
+    }
+  ]
+}

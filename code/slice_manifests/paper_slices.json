@@ -1,0 +1,192 @@
+{
+  "version": 1,
+  "default_key_fields": ["instance_id", "step_t"],
+  "notes": [
+    "This manifest records the slice policies used by code/scripts/reproduce_paper.py.",
+    "Several released diagnostic files contain duplicate instance_id/step_t rows because they include repeated protocol probes. The manifest therefore makes duplicate handling explicit.",
+    "For new analyses, prefer keys that include seed when comparing multi-seed files. The paper-facing policies below reproduce the manuscript's reported rounded values from the released artifacts."
+  ],
+  "groups": {
+    "toolsandbox_qwen_table_last": {
+      "paths": [
+        "data/toolsandbox/qwen-receiver-only.jsonl",
+        "data/toolsandbox/qwen-single-full.jsonl",
+        "data/toolsandbox/qwen-ma-9B-from-80B.jsonl"
+      ],
+      "dedupe": "last"
+    },
+    "toolsandbox_qwen_table_first_with_match": {
+      "paths": [
+        "data/toolsandbox/qwen-receiver-only.jsonl",
+        "data/toolsandbox/qwen-single-full.jsonl",
+        "data/toolsandbox/qwen-ma-9B-from-80B.jsonl",
+        "data/toolsandbox/qwen-ma-9B-from-9B.jsonl"
+      ],
+      "dedupe": "first"
+    }
+  },
+  "main_table_qwen": [
+    {
+      "benchmark": "ContextBench",
+      "protocol": "RO",
+      "path": "data/contextbench/qwen-receiver-only.jsonl",
+      "selector": {},
+      "expected_hj": 0.6333333333333333
+    },
+    {
+      "benchmark": "ContextBench",
+      "protocol": "SF",
+      "path": "data/contextbench/qwen-single-full.jsonl",
+      "selector": {},
+      "expected_hj": 0.29375
+    },
+    {
+      "benchmark": "ContextBench",
+      "protocol": "MA",
+      "path": "data/contextbench/qwen-ma-9B-from-80B.jsonl",
+      "selector": {},
+      "expected_hj": 0.775
+    },
+    {
+      "benchmark": "ContextBench",
+      "protocol": "MA_match",
+      "path": "data/contextbench/qwen-ma-9B-from-9B.jsonl",
+      "selector": {},
+      "expected_hj": 0.5645833333333333
+    },
+    {
+      "benchmark": "ToolSandbox",
+      "protocol": "RO",
+      "path": "data/toolsandbox/qwen-receiver-only.jsonl",
+      "selector": {"last_n": 72},
+      "expected_hj": 0.8888888888888888
+    },
+    {
+      "benchmark": "ToolSandbox",
+      "protocol": "SF",
+      "path": "data/toolsandbox/qwen-single-full.jsonl",
+      "selector": {"dedupe": "last", "common_group": "toolsandbox_qwen_table_last"},
+      "expected_hj": 0.9027777777777778
+    },
+    {
+      "benchmark": "ToolSandbox",
+      "protocol": "MA",
+      "path": "data/toolsandbox/qwen-ma-9B-from-80B.jsonl",
+      "selector": {"dedupe": "last", "common_group": "toolsandbox_qwen_table_last"},
+      "expected_hj": 0.6527777777777778
+    },
+    {
+      "benchmark": "ToolSandbox",
+      "protocol": "MA_match",
+      "path": "data/toolsandbox/qwen-ma-9B-from-9B.jsonl",
+      "selector": {"dedupe": "first", "common_group": "toolsandbox_qwen_table_first_with_match"},
+      "expected_hj": 0.9166666666666666
+    },
+    {
+      "benchmark": "tau-bench",
+      "protocol": "RO",
+      "path": "data/tau_bench/qwen-receiver-only.jsonl",
+      "selector": {"where": {"seed": 0}},
+      "expected_hj": 0.1388888888888889
+    },
+    {
+      "benchmark": "tau-bench",
+      "protocol": "SF",
+      "path": "data/tau_bench/qwen-single-full.jsonl",
+      "selector": {"where": {"seed": 0}},
+      "expected_hj": 0.16666666666666666
+    },
+    {
+      "benchmark": "tau-bench",
+      "protocol": "MA",
+      "path": "data/tau_bench/qwen-ma-9B-from-80B.jsonl",
+      "selector": {"where": {"seed": 0}},
+      "expected_hj": 0.1388888888888889
+    },
+    {
+      "benchmark": "tau-bench",
+      "protocol": "MA_match",
+      "path": "data/tau_bench/qwen-ma-9B-from-9B.jsonl",
+      "selector": {},
+      "expected_hj": 0.16666666666666666
+    },
+    {
+      "benchmark": "BFCL",
+      "protocol": "RO",
+      "path": "data/bfcl/qwen-receiver-only.jsonl",
+      "selector": {},
+      "expected_hj": 0.98
+    },
+    {
+      "benchmark": "BFCL",
+      "protocol": "SF",
+      "path": "data/bfcl/qwen-single-full.jsonl",
+      "selector": {},
+      "expected_hj": 1.0
+    },
+    {
+      "benchmark": "BFCL",
+      "protocol": "MA",
+      "path": "data/bfcl/qwen-ma-9B-from-80B.jsonl",
+      "selector": {},
+      "expected_hj": 0.75
+    },
+    {
+      "benchmark": "BFCL",
+      "protocol": "MA_match",
+      "path": "data/bfcl/qwen-ma-9B-from-9B.jsonl",
+      "selector": {},
+      "expected_hj": 0.91
+    }
+  ],
+  "sender_delta_claims": [
+    {
+      "benchmark": "SWE-Lite",
+      "main_path": "data/swe_bench_lite/qwen-ma-9B-from-coder.jsonl",
+      "match_path": "data/swe_bench_lite/qwen-ma-9B-from-9B.jsonl",
+      "main_selector": {"dedupe": "last"},
+      "match_selector": {"dedupe": "last"},
+      "expected_delta": 0.5208333333333334
+    },
+    {
+      "benchmark": "ContextBench",
+      "main_path": "data/contextbench/qwen-ma-9B-from-80B.jsonl",
+      "match_path": "data/contextbench/qwen-ma-9B-from-9B.jsonl",
+      "main_selector": {},
+      "match_selector": {},
+      "expected_delta": 0.21041666666666667
+    },
+    {
+      "benchmark": "RepoBench",
+      "main_path": "data/repobench/qwen-ma-9B-from-80B.jsonl",
+      "match_path": "data/repobench/qwen-ma-9B-from-9B.jsonl",
+      "main_selector": {},
+      "match_selector": {},
+      "expected_delta": 0.0875
+    },
+    {
+      "benchmark": "tau-bench",
+      "main_path": "data/tau_bench/qwen-ma-9B-from-80B.jsonl",
+      "match_path": "data/tau_bench/qwen-ma-9B-from-9B.jsonl",
+      "main_selector": {"where": {"seed": 0}},
+      "match_selector": {},
+      "expected_delta": -0.027777777777777776
+    },
+    {
+      "benchmark": "ToolSandbox",
+      "main_path": "data/toolsandbox/qwen-ma-9B-from-80B.jsonl",
+      "match_path": "data/toolsandbox/qwen-ma-9B-from-9B.jsonl",
+      "main_selector": {"dedupe": "last", "common_group": "toolsandbox_qwen_table_last"},
+      "match_selector": {"dedupe": "first", "common_group": "toolsandbox_qwen_table_first_with_match"},
+      "expected_delta": -0.2638888888888889
+    },
+    {
+      "benchmark": "BFCL",
+      "main_path": "data/bfcl/qwen-ma-9B-from-80B.jsonl",
+      "match_path": "data/bfcl/qwen-ma-9B-from-9B.jsonl",
+      "main_selector": {},
+      "match_selector": {},
+      "expected_delta": -0.16
+    }
+  ]
+}

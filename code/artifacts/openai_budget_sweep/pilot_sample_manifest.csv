@@ -1,0 +1,11 @@
+benchmark,source_path,instance_id,step_t,gold_action,gold_artifact,released_message_tokens,released_hit_joint
+ContextBench,data/contextbench/qwen-ma-9B-from-80B.jsonl,SWE-Bench-Verified__python__maintenance__bugfix__08563070,12,edit,django/db/models/deletion.py,128,True
+ContextBench,data/contextbench/qwen-ma-9B-from-80B.jsonl,SWE-Bench-Verified__python__maintenance__bugfix__27a40875,2,edit,astropy/utils/misc.py,123,False
+ContextBench,data/contextbench/qwen-ma-9B-from-80B.jsonl,SWE-Bench-Verified__python__maintenance__bugfix__3185b834,17,edit,astropy/io/fits/card.py,128,True
+ContextBench,data/contextbench/qwen-ma-9B-from-80B.jsonl,SWE-Bench-Verified__python__maintenance__bugfix__88e3486b,9,edit,astropy/io/ascii/qdp.py,128,True
+ContextBench,data/contextbench/qwen-ma-9B-from-80B.jsonl,SWE-Bench-Verified__python__maintenance__bugfix__91fb680f,10,edit,django/db/models/query.py,128,False
+ToolSandbox,data/toolsandbox/qwen-ma-9B-from-80B.jsonl,cellular_off,1,run_test,set_cellular_service_status,123,True
+ToolSandbox,data/toolsandbox/qwen-ma-9B-from-80B.jsonl,find_address_with_lat_lon,2,run_test,search_lat_lon,92,True
+ToolSandbox,data/toolsandbox/qwen-ma-9B-from-80B.jsonl,find_stock_symbol_with_company_name,0,run_test,search_stock,119,True
+ToolSandbox,data/toolsandbox/qwen-ma-9B-from-80B.jsonl,search_relationship_with_phone_number,1,run_test,search_contacts,120,False
+ToolSandbox,data/toolsandbox/qwen-ma-9B-from-80B.jsonl,send_message_with_phone_number_and_content,0,run_test,send_message_with_phone_number,102,True

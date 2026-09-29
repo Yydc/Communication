@@ -1,0 +1,13 @@
+# Selector / selector controller reference implementation — minimal dependencies.
+#
+# The controller itself is pure Python and only needs the standard library.
+# Each backend is optional; install only the ones you intend to use.
+#
+# Common (only needed for token counting in core/tokenizer.py):
+tiktoken>=0.5
+
+# OpenAI / Together AI — both speak OpenAI-compatible chat-completions:
+openai>=1.0
+
+# Anthropic Claude:
+anthropic>=0.40
